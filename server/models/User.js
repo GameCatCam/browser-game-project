@@ -17,6 +17,9 @@ const userSchema = new Schema(
 		password: {
 			type: String,
 			required: true,
+		},
+		highScore: {
+			type: Number
 		}
 	},
 	// set this to use virtual below
