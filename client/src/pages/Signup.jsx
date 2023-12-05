@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
 function Signup() {
-	const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', password: '' });
+	const [formState, setFormState] = useState({ username: '', email: '', password: '' });
 	const [addUser] = useMutation(ADD_USER);
 
 	const handleFormSubmit = async (event) => {
@@ -34,22 +34,12 @@ function Signup() {
 			<h2>Signup</h2>
 			<form onSubmit={handleFormSubmit}>
 				<div>
-					<label htmlFor="firstName">First Name:</label>
+					<label htmlFor="username">Username:</label>
 					<input
-						placeholder="First"
-						name="firstName"
-						type="firstName"
-						id="firstName"
-						onChange={handleChange}
-					/>
-				</div>
-				<div>
-					<label htmlFor="lastName">Last Name:</label>
-					<input
-						placeholder="Last"
-						name="lastName"
-						type="lastName"
-						id="lastName"
+						placeholder="username"
+						name="username"
+						type="username"
+						id="username"
 						onChange={handleChange}
 					/>
 				</div>
