@@ -9,3 +9,13 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_USERS = gql`
+  {
+    allUsers {
+      _id
+      username
+      highScore
+    }
+  }
+`

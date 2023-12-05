@@ -1,29 +1,32 @@
 // import { useState, useEffect } from 'react'
-// import { useMutation, useQuery } from "@apollo/client";
+import { /* useMutation, */useQuery } from "@apollo/client";
 
-// import { GET_SCORES } from '../utils/queries'
+import { QUERY_USERS } from '../utils/queries'
 // import { RESET_SCORE } from '../utils/mutations'
 
 const Leaderboard = () => {
-    // Code for idk high scores or smth
-    // const getScores = async () => {
-    //     const [highScores, setHighScores] = useState([])
-    // }
+    const { loading, error, data } = useQuery(QUERY_USERS);
 
-    // const resetScore = () => {
-    //     const [myScore, setMyScore] = useState()
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
-    //     const [resetScore] = useMutation(RESET_SCORE)
-    // }
+    const users = data.allUsers;
 
 	return (
         <>
-            <h2>
+            <h2 className="leader-header">
                 Leaderboard Page
             </h2>
-            <ul>
-
-            </ul>
+            <div>
+                <ul className="leader-list">
+                {users.map(user => (
+                    <li className="leader-unit" key={user._id}>
+                        <p className="leader-user">{user.username}</p>
+                        <p className="leader-score">{user.highScore}</p>
+                    </li>
+                ))}
+                </ul>
+            </div>
         </>
 	);
 };
