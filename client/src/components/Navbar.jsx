@@ -7,7 +7,7 @@ const AppNavbar = () => {
 	return (
 		<header className="flex-row px-1">
 			<h1>
-				Sample Application
+				Fancy Chef
 			</h1>
 
 			<nav>
@@ -17,6 +17,16 @@ const AppNavbar = () => {
 							<a href="/" onClick={() => Auth.logout()}>
 								Logout
 							</a>
+						</li>
+						<li>
+							<Link to="/game">
+								Game
+							</Link>
+						</li>
+						<li>
+							<Link to="/leaderboard">
+								Leaderboard
+							</Link>
 						</li>
 					</ul>
 					:
