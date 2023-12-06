@@ -33,6 +33,18 @@ body {
   animation: blink 1s steps(4, start) infinite
 }
 
+.lndgBtn {
+  position: absolute;
+    top: 0;
+    bottom: -100px;
+    right: 0;
+    left: 0;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    margin: auto;
+}
+
 @-moz-keyframes blink {
   to {
     visibility: hidden;
