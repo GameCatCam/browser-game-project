@@ -31,7 +31,7 @@ function Login() {
 
 	return (
 		<div>
-			<Link to="/signup">← Go to Signup</Link>
+			<Link to="/home">← Return Home</Link>
 
 			<h2>Login</h2>
 			<form onSubmit={handleFormSubmit}>
@@ -61,7 +61,7 @@ function Login() {
 					</div>
 				) : null}
 				<div>
-					<button type="submit">Submit</button>
+					<a href="./landing" class="btn btn-primary" tabindex="-1" role="button">Submit</a>
 				</div>
 			</form>
 		</div>

@@ -29,7 +29,7 @@ function Signup() {
 
 	return (
 		<div>
-			<Link to="/login">← Go to Login</Link>
+			<Link to="/home">← Return Home</Link>
 
 			<h2>Signup</h2>
 			<form onSubmit={handleFormSubmit}>
@@ -64,7 +64,7 @@ function Signup() {
 					/>
 				</div>
 				<div>
-					<button type="submit">Submit</button>
+					<a href="./landing" class="btn btn-primary" tabindex="-1" role="button">Submit</a>
 				</div>
 			</form>
 		</div>
