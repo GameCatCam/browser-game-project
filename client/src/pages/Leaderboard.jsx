@@ -1,5 +1,6 @@
 // import { useState, useEffect } from 'react'
 import { /* useMutation, */useQuery } from "@apollo/client";
+import { Link } from "react-router-dom"
 
 import { QUERY_USERS } from '../utils/queries'
 // import { RESET_SCORE } from '../utils/mutations'
@@ -14,9 +15,12 @@ const Leaderboard = () => {
 
 	return (
         <>
-            <h2 className="leader-header">
-                Leaderboard Page
-            </h2>
+            <header>
+                <Link to={"/game"}>Game</Link>
+                <h2 className="leader-header">
+                    Leaderboard Page
+                </h2>
+            </header>
             <div>
                 <ul className="leader-list">
                 {sortedUsers.map(user => (
