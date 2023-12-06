@@ -61,7 +61,7 @@ function Login() {
 					</div>
 				) : null}
 				<div>
-					<a href="./game" class="btn btn-primary" tabindex="-1" role="button">Submit</a>
+					<button type="submit">Submit</button>
 				</div>
 			</form>
 		</div>
