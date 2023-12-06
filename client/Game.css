@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    justify-content: center;
+}
+
+#main-game {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#canvas{
+    width: 65%;
+    background: #cdcdcd;
+    border: 6px solid #2f215f;
+}

@@ -1,3 +1,5 @@
+import '../Game.css' //import CSS for Game.jsx
+
 import { Outlet } from 'react-router-dom';
 import {
   ApolloClient,
