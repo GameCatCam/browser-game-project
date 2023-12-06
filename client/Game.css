@@ -1,8 +1,15 @@
-nav ul {
-    display: flex;
-    justify-content: right;
+header {
+    text-align: center;
 }
 
-nav ul li {
-    padding-right: 50px;
+#main-game {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#canvas{
+    width: 100%;
+    background: #cdcdcd;
 }
