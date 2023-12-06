@@ -1,4 +1,5 @@
 import logo from "../assets/img/logo.png"
+import Game1 from "../components/Game1" //imports Game1 component from Game1.jsx
 
 const Game = () => {
 	return (
@@ -6,10 +7,7 @@ const Game = () => {
 			<header>
 				<img id="logo" src={logo}width="18%"></img>
 			</header>
-			<div id="main-game">
-				<h1>Game Page</h1>
-				<canvas id="canvas"></canvas>
-			</div>
+			<Game1 />
 		</div>
 	);
 };

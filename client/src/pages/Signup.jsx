@@ -64,7 +64,7 @@ function Signup() {
 					/>
 				</div>
 				<div>
-					<a href="./landing" class="btn btn-primary" tabindex="-1" role="button">Submit</a>
+					<a href="./game" class="btn btn-primary" tabindex="-1" role="button">Submit</a>
 				</div>
 			</form>
 		</div>
