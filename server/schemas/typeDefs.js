@@ -3,6 +3,7 @@ const typeDefs = `
     _id: ID!
     username: String
     email: String
+    highScore: Int
   }
 
   type Auth {
@@ -12,12 +13,14 @@ const typeDefs = `
 
   type Query {
     me: User
+    allUsers: [User]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, highScore: Int): Auth
 	  updateUser(username: String, email: String, password: String): User
+    addScore(_id: ID, highScore: Int): User
   }
 `;
 

@@ -12,6 +12,17 @@ const resolvers = {
 
 			throw AuthenticationError;
 		},
+		allUsers: async (parent, args, context) => {
+			try {
+				if (context.user) {
+					const users = await User.find({})
+
+					return users
+				}
+			} catch (err) {
+				throw AuthenticationError
+			}
+		}
 	},
 
 	Mutation: {
@@ -27,6 +38,11 @@ const resolvers = {
 			}
 
 			throw AuthenticationError;
+		},
+		addScore: async (parent, args, context) => {
+			if (context.user) {
+				return await User.findByIdAndUpdate(context.user._id, args, { new: true })
+			}
 		},
 		login: async (parent, { email, password }) => {
 			const user = await User.findOne({ email });
