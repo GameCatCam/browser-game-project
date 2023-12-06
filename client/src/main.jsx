@@ -8,6 +8,8 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import NoMatch from './pages/NoMatch'
+import Game from './pages/Game.jsx'
+import Leader from './pages/Leaderboard.jsx'
 
 const router = createBrowserRouter([
 	{
@@ -30,6 +32,12 @@ const router = createBrowserRouter([
 			}, {
 				path: "*",
 				element: <NoMatch />
+			}, {
+				path: '/game',
+				element: <Game />
+			}, {
+				path: '/leaderboard',
+				element: <Leader />
 			}
 		]
 	}

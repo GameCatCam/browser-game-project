@@ -13,8 +13,8 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser($username: String!, $email: String!, $password: String!, $highScore: Int) {
+    addUser(username: $username, email: $email, password: $password, highScore: $highScore) {
       token
       user {
         _id
@@ -33,3 +33,13 @@ export const UPDATE_USER = gql`
     }
   }
 `;
+
+export const UPDATE_SCORE = gql`
+  mutation addScore($_id: ID!, $highScore: Int!) {
+    addScore(_id: $_id, highScore: $highScore) {
+      _id
+      username
+      highScore
+    }
+  }
+`
