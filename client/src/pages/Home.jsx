@@ -1,6 +1,7 @@
 import '../App.css';
 import Auth from '../utils/auth';
 import chef from '../assets/chef.png'
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -20,10 +21,14 @@ const Home = () => {
                 :
                 <div>
                     <div>
-                        <a href="./signup" class="btn btn-primary" role="button">Sign Up</a>
+                        <Link to="/signup">
+                        <button className="btn btn-primary">Sign Up</button>
+                        </Link>
                     </div>
                     <div>
-                        <a href="./login" class="btn btn-secondary" role="button">Login</a>
+                        <Link to="/login">
+                        <button className="btn btn-secondary">Login</button>
+                        </Link>
                     </div>
                 </div>
             }
