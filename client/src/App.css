@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 html,
 body {
@@ -123,14 +124,25 @@ img {
   animation: blink 1s steps(4, start) infinite
 }
 
-.login, .signup {
+.login,
+.signup {
   font-family: 'Silkscreen', sans-serif;
   font-size: 40px;
   color: white;
   text-align: center;
 }
 
-.btnlgn, .btnsgnp {
+.heading {
+  font-size: 100px;
+  text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #91fcfe,
+    4px 0 0 #4405fc;
+  animation: blink 1s steps(4, start) infinite
+}
+
+.btnlgn,
+.btnsgnp {
   top: 0;
   bottom: -100px;
   right: 0;
@@ -139,7 +151,7 @@ img {
   width: 150px;
   text-align: center;
   margin: auto;
-  font-size: 20px;
+  font-size: 12px;
   letter-spacing: 5px;
   text-shadow: -2px 0 0 #fdff2a,
     -4px 0 0 #df4a42,
@@ -148,5 +160,59 @@ img {
 }
 
 input {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Press Start 2P', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
+
+ul {
+  list-style: none;
+  color: white;
+  font-size: large;
+}
+
+.gmBtn {
+  height: 40px;
+}
+
+.lbBtn {
+  margin: 10px;
+  ;
+}
+
+#leaderboard {
+  padding: 50px;
+}
+
+.ladder-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #5055CB;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: 1px solid #686EF9;
+}
+
+.ladder-title {
+  flex: 2;
+  text-align: center;
+  font-size: 20px;
+  color: white !important;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.leaderboard-results {
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.leaderboard-results thead th {
+  padding: 25px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
 }
