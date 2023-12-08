@@ -20,7 +20,7 @@ const Leaderboard = () => {
                     <Link className="btn btn-secondary lbBtn" to={"/game"}>Game</Link>
                 </div>  
                 <div>
-                    <Link className="btn btn-primary lbBtn" to="###">Reset Score</Link>
+                    <button className="btn btn-primary lbBtn" to="###">Reset Score</button>
                 </div>
                 
             </header>
@@ -37,15 +37,15 @@ const Leaderboard = () => {
                                 <th>Player</th>
                                 <th>PTS</th>
                             </tr>
-                            <ul className="leader-list">
-                                {sortedUsers.map(user => (
-                                    <li className="leader-unit" key={user._id}>
-                                        <p className="leader-user">{user.username}</p>
-                                        <p className="leader-score">{user.highScore}</p>
-                                    </li>
-                                ))}
-                            </ul>
                         </thead>
+                        <tbody className="leader-list">
+                            {sortedUsers.map(user => (
+                                <tr className="leader-unit" key={user._id}>
+                                    <th className="leader-user">{user.username}</th>
+                                    <th className="leader-score">{user.highScore}</th>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                 </section>
             </div>
