@@ -6,6 +6,7 @@ import platform from './assets/platform.png'
 import star from './assets/star.png'
 import bombImg from './assets/bomb.png'
 
+
 const PhaserGame = () => {
   useEffect(() => {
     let platforms, player, cursors, stars, bombs, bomb;
@@ -150,7 +151,7 @@ const PhaserGame = () => {
                 player.setTint(0xff0000);
                 player.anims.play('turn');
             
-                // Use Phaser's time event to pause the game after a delay
+                // pauses the game after a delay
                 this.time.delayedCall(100, function() {
                     this.physics.pause();
                 }, [], this);

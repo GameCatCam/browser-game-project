@@ -13,26 +13,44 @@ const Leaderboard = () => {
 
     const sortedUsers = [...data.allUsers].sort((a, b) => b.highScore - a.highScore);
 
-	return (
+    return (
         <>
             <header>
-                <Link to={"/game"}>Game</Link>
-                <h2 className="leader-header">
-                    Leaderboard Page
-                </h2>
+                <div>
+                    <Link className="btn btn-secondary lbBtn" to={"/game"}>Game</Link>
+                </div>  
+                <div>
+                    <button className="btn btn-primary lbBtn" to="###">Reset Score</button>
+                </div>
+                
             </header>
-            <div>
-                <ul className="leader-list">
-                {sortedUsers.map(user => (
-                    <li className="leader-unit" key={user._id}>
-                        <p className="leader-user">{user.username}</p>
-                        <p className="leader-score">{user.highScore}</p>
-                    </li>
-                ))}
-                </ul>
+            <div className="container-wrap">
+                <section id="leaderboard">
+                    <nav className="ladder-nav">
+                        <div className="ladder-title">
+                            <h1>Leaderboard</h1>
+                        </div>
+                    </nav>
+                    <table id="rankings" className="leaderboard-results" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>PTS</th>
+                            </tr>
+                        </thead>
+                        <tbody className="leader-list">
+                            {sortedUsers.map(user => (
+                                <tr className="leader-unit" key={user._id}>
+                                    <th className="leader-user">{user.username}</th>
+                                    <th className="leader-score">{user.highScore}</th>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </section>
             </div>
         </>
-	);
+    );
 };
 
 export default Leaderboard;
