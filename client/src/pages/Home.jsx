@@ -20,7 +20,7 @@ const Home = () => {
                         </Link>
                     </div>
                     <div>
-                        <a href="/" class="btn btn-secondary" role="button" onClick={() => Auth.logout()}>
+                        <a href="/" className="btn btn-secondary" role="button" onClick={() => Auth.logout()}>
                             Logout
                         </a>
                     </div>

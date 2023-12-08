@@ -4,11 +4,11 @@ import dude from './assets/dude.png'
 import sky from './assets/sky.png'
 import platform from './assets/platform.png'
 import star from './assets/star.png'
-import bomb from './assets/sky.png'
+import bombImg from './assets/sky.png'
 
 const PhaserGame = () => {
   useEffect(() => {
-    let platforms, player, cursors, stars, bombs= 0
+    let platforms, player, cursors, stars, bombs, bomb;
 
     // Create a new Phaser game config
     const config = {
@@ -38,7 +38,7 @@ const PhaserGame = () => {
         this.load.image('sky', sky)
         this.load.image('ground', platform)
         this.load.image('star', star)
-        this.load.image('bomb', bomb)
+        this.load.image('bomb', bombImg)
         this.load.spritesheet(
             'dude', 
             dude,
@@ -122,7 +122,7 @@ const PhaserGame = () => {
                     ? Phaser.Math.Between(400, 800) 
                     : Phaser.Math.Between(0, 400);
 
-                let bomb = bombs.create(x, 16, 'bomb');
+                bomb = bombs.create(x, 16, 'bomb');
                 bomb.setBounce(1);
                 bomb.setCollideWorldBounds(true);
                 bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
@@ -153,7 +153,7 @@ const PhaserGame = () => {
 
                 player.anims.play('turn');
 
-                gameOver = true;
+                let gameOver = true;
             }
         //
     }
