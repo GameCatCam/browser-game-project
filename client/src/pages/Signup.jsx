@@ -28,7 +28,7 @@ function Signup() {
 	};
 
 	return (
-		<div>
+		<div className="signup">
 			<Link to="/home">← Return Home</Link>
 
 			<h2>Signup</h2>
@@ -64,7 +64,7 @@ function Signup() {
 					/>
 				</div>
 				<div>
-					<button type="submit">Submit</button>
+					<button className="btn btn-primary game btnsgnp" type="submit">Submit</button>
 				</div>
 			</form>
 		</div>

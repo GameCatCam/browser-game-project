@@ -30,13 +30,13 @@ function Login() {
 	};
 
 	return (
-		<div>
+		<div className="login">
 			<Link to="/home">← Return Home</Link>
 
 			<h2>Login</h2>
 			<form onSubmit={handleFormSubmit}>
 				<div>
-					<label htmlFor="email">Email address:</label>
+					<label htmlFor="email">Email:</label>
 					<input
 						placeholder="youremail@test.com"
 						name="email"
@@ -61,7 +61,7 @@ function Login() {
 					</div>
 				) : null}
 				<div>
-					<button type="submit">Submit</button>
+					<button className="btn btn-primary game btnlgn" type="submit">Submit</button>
 				</div>
 			</form>
 		</div>
