@@ -197,7 +197,7 @@ const PhaserGame = () => {
   }, []); // Empty dependency array ensures the effect runs once
 
   return (<><div id="phaser-game" />
-  <div>{userScore}</div></>);
+  <div id="temp-score">{userScore}</div></>);
 };
 
 export default PhaserGame;
