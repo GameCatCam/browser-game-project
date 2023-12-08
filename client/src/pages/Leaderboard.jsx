@@ -13,27 +13,44 @@ const Leaderboard = () => {
 
     const sortedUsers = [...data.allUsers].sort((a, b) => b.highScore - a.highScore);
 
-	return (
+    return (
         <>
             <header>
-                <Link to={"/game"}>Game</Link>
-                <h2 className="leader-header">
-                    Leaderboard Page
-                </h2>
-                <Link to="###">Reset Score</Link>
+                <div>
+                    <Link className="btn btn-secondary lbBtn" to={"/game"}>Game</Link>
+                </div>  
+                <div>
+                    <Link className="btn btn-primary lbBtn" to="###">Reset Score</Link>
+                </div>
+                
             </header>
-            <div>
-                <ul className="leader-list">
-                {sortedUsers.map(user => (
-                    <li className="leader-unit" key={user._id}>
-                        <p className="leader-user">{user.username}</p>
-                        <p className="leader-score">{user.highScore}</p>
-                    </li>
-                ))}
-                </ul>
+            <div className="container-wrap">
+                <section id="leaderboard">
+                    <nav className="ladder-nav">
+                        <div className="ladder-title">
+                            <h1>Leaderboard</h1>
+                        </div>
+                    </nav>
+                    <table id="rankings" className="leaderboard-results" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>PTS</th>
+                            </tr>
+                            <ul className="leader-list">
+                                {sortedUsers.map(user => (
+                                    <li className="leader-unit" key={user._id}>
+                                        <p className="leader-user">{user.username}</p>
+                                        <p className="leader-score">{user.highScore}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </thead>
+                    </table>
+                </section>
             </div>
         </>
-	);
+    );
 };
 
 export default Leaderboard;
