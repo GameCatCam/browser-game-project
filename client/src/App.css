@@ -208,6 +208,7 @@ ul {
 .leaderboard-results {
   text-align: left;
   border-collapse: collapse;
+  width: 100%;
 }
 
 .leaderboard-results thead th {
@@ -215,4 +216,10 @@ ul {
   color: white;
   font-size: 14px;
   font-weight: bold;
+}
+
+.leaderboard-results tbody th {
+  padding: 25px;
+  color: rgb(230, 230, 230);
+  font-size: 18px;
 }
