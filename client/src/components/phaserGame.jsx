@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Phaser from 'phaser';
 import dude from './assets/dude.png'
 import sky from './assets/sky.png'
@@ -8,6 +8,9 @@ import bombImg from './assets/bomb.png'
 
 
 const PhaserGame = () => {
+    // variable checks if the game is running
+    const [gameRunning, setGameRunning] = useState(false);
+
   useEffect(() => {
     let platforms, player, cursors, stars, bombs, bomb;
 
@@ -131,36 +134,59 @@ const PhaserGame = () => {
         }
     //
     // Score text
-            var score = 0;
-            var scoreText;
-            scoreText = this.add.text(
-                16,
-                16, 
-                'score: 0', 
-                { fontSize: '32px', fill: '#000' }
-            );
+        var score = 0;
+        var scoreText;
+        scoreText = this.add.text(
+            16,
+            16, 
+            'score: 0', 
+            { fontSize: '32px', fill: '#000' }
+        );
     //
     // Bombs
-            bombs = this.physics.add.group();
+        bombs = this.physics.add.group();
 
-            this.physics.add.collider(bombs, platforms);
+        this.physics.add.collider(bombs, platforms);
 
-            this.physics.add.collider(player, bombs, hitBomb, null, this);
+        this.physics.add.collider(player, bombs, hitBomb, null, this);
 
-            function hitBomb(player, bomb) {
-                player.setTint(0xff0000);
-                player.anims.play('turn');
-            
-                // pauses the game after a delay
-                this.time.delayedCall(100, function() {
-                    this.physics.pause();
-                }, [], this);
-            
-                let gameOver = true;
-            }            
+        function hitBomb(player, bomb) {
+            player.setTint(0xff0000);
+            player.anims.play('turn');
+        
+            // pauses the game after a delay
+            this.time.delayedCall(100, function() {
+                this.physics.pause();
+            }, [], this);
+        
+            let gameOver = true;
+
+            // Resets game due to useEffect()
+            setGameRunning(false);
+        }
+    //
+    //Reset Code
+        // Reset game state when replaying
+            score = 0;
+            scoreText.setText('Score: ' + score);
+
+        // Reset player position
+            player.setX(100).setY(450);
+            player.setVelocityX(0);
+            player.setVelocityY(0);
+
+        // Reset bombs and stars
+            bombs.clear(true, true);
+            stars.children.iterate((child) => {
+            child.enableBody(true, child.x, 0, true, true);
+            });
+
+        // Set gameRunning state to true
+            setGameRunning(true);
+    //
     }
 
-    // Update logic
+    // Update logic for player movement
     function update() {
         if (cursors.left.isDown)
         {
@@ -188,11 +214,14 @@ const PhaserGame = () => {
     }
 
     return () => {
+        // deletes game from page on page switch
         game.destroy(true);
     };
-  }, []); // Empty dependency array ensures the effect runs once
+  }, [gameRunning]); // Empty dependency array ensures the effect runs once
 
-  return <div id="phaser-game" />;
+  return (
+    <div id="phaser-game" />
+  )
 };
 
 export default PhaserGame;
