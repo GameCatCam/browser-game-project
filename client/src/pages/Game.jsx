@@ -8,9 +8,9 @@ const Game = () => {
 	return (
 		<div>
 			<header>
-				<Link to="/leaderboard">Leaderboard</Link>
+				<Link className="btn btn-secondary gmBtn" to="/leaderboard">Leaderboard</Link>
 				<img id="logo" src={logo}width="18%"></img>
-				<a href="/" onClick={() => Auth.logout()}>
+				<a className="btn btn-secondary gmBtn" href="/" onClick={() => Auth.logout()}>
                     Logout
                 </a>
 			</header>

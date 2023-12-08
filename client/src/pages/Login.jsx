@@ -33,10 +33,10 @@ function Login() {
 		<div className="login">
 			<Link to="/home">← Return Home</Link>
 
-			<h2>Login</h2>
+			<h1 className="heading">Login</h1>
 			<form onSubmit={handleFormSubmit}>
 				<div>
-					<label htmlFor="email">Email:</label>
+					<label htmlFor="email">Email</label>
 					<input
 						placeholder="youremail@test.com"
 						name="email"
@@ -46,7 +46,7 @@ function Login() {
 					/>
 				</div>
 				<div>
-					<label htmlFor="pwd">Password:</label>
+					<label htmlFor="pwd">Password</label>
 					<input
 						placeholder="******"
 						name="password"
