@@ -20,6 +20,7 @@ const Leaderboard = () => {
                 <h2 className="leader-header">
                     Leaderboard Page
                 </h2>
+                <Link to="###">Reset Score</Link>
             </header>
             <div>
                 <ul className="leader-list">

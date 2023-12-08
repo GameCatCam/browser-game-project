@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Libre+Baskerville&family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Silkscreen&display=swap');
 
 html,
 body {
@@ -35,20 +35,20 @@ body {
 
 .lndgBtn {
   position: absolute;
-    top: 0;
-    bottom: -100px;
-    right: 0;
-    left: 0;
-    height: 40px;
-    width: 150px;
-    text-align: center;
-    margin: auto;
-    font-size: 20px;
-    letter-spacing: 5px;
-    text-shadow: -2px 0 0 #fdff2a,
-      -4px 0 0 #df4a42,
-      2px 0 0 #91fcfe,
-      4px 0 0 #4405fc;
+  top: 0;
+  bottom: -100px;
+  right: 0;
+  left: 0;
+  height: 40px;
+  width: 150px;
+  text-align: center;
+  margin: auto;
+  font-size: 20px;
+  letter-spacing: 5px;
+  text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #91fcfe,
+    4px 0 0 #4405fc;
 }
 
 @-moz-keyframes blink {
@@ -95,6 +95,20 @@ body {
     4px 0 0 #4405fc;
 }
 
+.game {
+  height: 38px;
+  width: 100px;
+  text-align: center;
+  margin: auto;
+  font-size: 20px;
+  line-height: 15px;
+  letter-spacing: 5px;
+  text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #91fcfe,
+    4px 0 0 #4405fc;
+}
+
 img {
   height: 200px;
 }
@@ -107,4 +121,32 @@ img {
     2px 0 0 #91fcfe,
     4px 0 0 #4405fc;
   animation: blink 1s steps(4, start) infinite
+}
+
+.login, .signup {
+  font-family: 'Silkscreen', sans-serif;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+}
+
+.btnlgn, .btnsgnp {
+  top: 0;
+  bottom: -100px;
+  right: 0;
+  left: 0;
+  height: 40px;
+  width: 150px;
+  text-align: center;
+  margin: auto;
+  font-size: 20px;
+  letter-spacing: 5px;
+  text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #91fcfe,
+    4px 0 0 #4405fc;
+}
+
+input {
+  font-family: 'Orbitron', sans-serif;
 }
