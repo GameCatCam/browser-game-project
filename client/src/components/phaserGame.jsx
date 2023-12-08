@@ -6,10 +6,26 @@ import platform from './assets/platform.png'
 import star from './assets/star.png'
 import bombImg from './assets/bomb.png'
 
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
+import { UPDATE_SCORE } from '../utils/mutations';
+
 
 const PhaserGame = () => {
 
   const [userScore, setUserScore] = useState(0);
+//   const [updateScore] = useMutation(UPDATE_SCORE); //calls in the mutation to update the high score
+//   const {loading, error, data} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
+
+  function getScore(){
+       const {loading, error, data} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
+       if (data){
+        return data.me.highScore;
+       } else {
+        return null;
+       }
+  }
+  const currentHighScore = getScore(); //Pulls the user's current high score from the DB
 
   useEffect(() => {
     let platforms, player, cursors, stars, bombs, bomb, score;
@@ -114,7 +130,7 @@ const PhaserGame = () => {
 
             score += 10;
             scoreText.setText('Score: ' + score);
-            setUserScore(score);
+            setUserScore(score); //sets the user score globally
 
             if (stars.countActive(true) === 0) {
                 stars.children.iterate(function (child) {
@@ -191,13 +207,17 @@ const PhaserGame = () => {
         }
     }
 
+    function gameEnd(){
+        console.log(currentHighScore);
+    }
     return () => {
+        gameEnd();
         game.destroy(true);
     };
   }, []); // Empty dependency array ensures the effect runs once
 
   return (<><div id="phaser-game" />
-  <div id="temp-score">{userScore}</div></>);
+  <div id="temp-score">{userScore}</div></>);//Temporary Score Display for Debugging purposes
 };
 
 export default PhaserGame;
