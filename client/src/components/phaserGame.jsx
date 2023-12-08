@@ -15,6 +15,7 @@ const PhaserGame = () => {
         type: Phaser.AUTO,
         width: 800,
         height: 600,
+        parent: 'main-game',
         physics: {
             default: 'arcade',
             arcade: {
@@ -157,7 +158,7 @@ const PhaserGame = () => {
         //
     }
 
-    // Update logic (optional)
+    // Update logic
     function update() {
         if (cursors.left.isDown)
         {
@@ -185,8 +186,7 @@ const PhaserGame = () => {
     }
 
     return () => {
-      // Cleanup (optional)
-      // This function will be called when the component unmounts
+        game.destroy(true);
     };
   }, []); // Empty dependency array ensures the effect runs once
 
