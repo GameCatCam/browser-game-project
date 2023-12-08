@@ -8,8 +8,8 @@ import bomb from './assets/sky.png'
 
 const PhaserGame = () => {
   useEffect(() => {
-    let bombs;
-    
+    let platforms, player, cursors, stars, bombs= 0
+
     // Create a new Phaser game config
     const config = {
         type: Phaser.AUTO,
@@ -50,7 +50,7 @@ const PhaserGame = () => {
     // Creates platforms
         this.add.image(400, 300, 'sky');
 
-        var platforms = this.physics.add.staticGroup();
+        platforms = this.physics.add.staticGroup();
 
         platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
@@ -59,7 +59,7 @@ const PhaserGame = () => {
         platforms.create(750, 220, 'ground');
     //
     // Creates Player character
-        var player = this.physics.add.sprite(100, 450, 'dude')
+        player = this.physics.add.sprite(100, 450, 'dude')
 
         player.setBounce(0.1)
         player.setCollideWorldBounds(true)
@@ -86,10 +86,10 @@ const PhaserGame = () => {
 
         this.physics.add.collider(player, platforms);
         // Adds arrow key movement --code in Update()
-        let cursors = this.input.keyboard.createCursorKeys();
+        cursors = this.input.keyboard.createCursorKeys();
     //
     // Adds collectibles (stars)
-        let stars = this.physics.add.group({
+        stars = this.physics.add.group({
             key: 'star',
             repeat: 11,
             setXY: { x: 12, y: 0, stepX: 70 }
@@ -116,6 +116,15 @@ const PhaserGame = () => {
                     child.enableBody(true, child.x, 0, true, true);
 
                 });
+
+                var x = (player.x < 400) 
+                    ? Phaser.Math.Between(400, 800) 
+                    : Phaser.Math.Between(0, 400);
+
+                let bomb = bombs.create(x, 16, 'bomb');
+                bomb.setBounce(1);
+                bomb.setCollideWorldBounds(true);
+                bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
             }
         }
     //
