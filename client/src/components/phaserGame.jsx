@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Phaser from 'phaser';
 import dude from './assets/dude.png'
 import sky from './assets/sky.png'
@@ -8,8 +8,11 @@ import bombImg from './assets/bomb.png'
 
 
 const PhaserGame = () => {
+
+  const [userScore, setUserScore] = useState(0);
+
   useEffect(() => {
-    let platforms, player, cursors, stars, bombs, bomb;
+    let platforms, player, cursors, stars, bombs, bomb, score;
 
     // Create a new Phaser game config
     const config = {
@@ -111,6 +114,7 @@ const PhaserGame = () => {
 
             score += 10;
             scoreText.setText('Score: ' + score);
+            setUserScore(score);
 
             if (stars.countActive(true) === 0) {
                 stars.children.iterate(function (child) {
@@ -192,7 +196,8 @@ const PhaserGame = () => {
     };
   }, []); // Empty dependency array ensures the effect runs once
 
-  return <div id="phaser-game" />;
+  return (<><div id="phaser-game" />
+  <div>{userScore}</div></>);
 };
 
 export default PhaserGame;
