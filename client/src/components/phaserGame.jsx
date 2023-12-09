@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Phaser from 'phaser';
-import dude from './assets/dude.png'
-import sky from './assets/sky.png'
-import platform from './assets/platform.png'
-import star from './assets/star.png'
-import bombImg from './assets/bomb.png'
+// import dude from './assets/dude.png'
+// import sky from './assets/sky.png'
+// import platform from './assets/platform.png'
+// import star from './assets/star.png'
+// import bombImg from './assets/bomb.png'
 
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
@@ -58,13 +58,13 @@ const PhaserGame = () => {
 
     // Preload assets
     function preload() {
-        this.load.image('sky', sky)
-        this.load.image('ground', platform)
-        this.load.image('star', star)
-        this.load.image('bomb', bombImg)
+        this.load.image('sky', "https://i.imgur.com/70piewl.png")
+        this.load.image('ground', "https://i.imgur.com/McZEWMY.png")
+        this.load.image('star', "https://i.imgur.com/o1qpCe9.png")
+        this.load.image('bomb', "https://i.imgur.com/emrOtaz.png")
         this.load.spritesheet(
             'dude', 
-            dude,
+            "https://i.imgur.com/ueXzJRy.png",
             { frameWidth: 32, frameHeight: 48 }
         )
     }
