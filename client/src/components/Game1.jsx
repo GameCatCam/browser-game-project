@@ -3,7 +3,7 @@ import PhaserGame from "./phaserGame";
 const Game1 = () => {
     return(
         <div id="main-game">
-            <PhaserGame />
+            {<PhaserGame />}
         </div>
     )
 }

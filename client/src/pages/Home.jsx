@@ -16,7 +16,7 @@ const Home = () => {
                 <div>
                     <div>
                         <Link to="/game">
-                            <button className="btn btn-primary game">Game</button>
+                            <button className="btn btn-primary btnsgnp">Game</button>
                         </Link>
                     </div>
                     <div>

@@ -15,3 +15,7 @@ header {
     background: #cdcdcd;
     border: 6px solid #2f215f;
 }
+
+#temp-score{
+    color: yellow;
+}

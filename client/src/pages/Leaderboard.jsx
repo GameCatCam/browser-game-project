@@ -12,6 +12,10 @@ const Leaderboard = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     const sortedUsers = [...data.allUsers].sort((a, b) => b.highScore - a.highScore);
+    const userRanks = sortedUsers.map((user, index) => ({
+        ...user,
+        playerRank: index + 1
+    }))
 
     return (
         <>
@@ -34,13 +38,15 @@ const Leaderboard = () => {
                     <table id="rankings" className="leaderboard-results" width="100%">
                         <thead>
                             <tr>
+                                <th>Rank</th>
                                 <th>Player</th>
                                 <th>PTS</th>
                             </tr>
                         </thead>
                         <tbody className="leader-list">
-                            {sortedUsers.map(user => (
+                            {userRanks.map(user => (
                                 <tr className="leader-unit" key={user._id}>
+                                    <th className="leader-rank">{user.playerRank}</th>
                                     <th className="leader-user">{user.username}</th>
                                     <th className="leader-score">{user.highScore}</th>
                                 </tr>

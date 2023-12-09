@@ -1,14 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Phaser from 'phaser';
 import dude from './assets/dude.png'
 import sky from './assets/sky.png'
 import platform from './assets/platform.png'
 import star from './assets/star.png'
-import bombImg from './assets/sky.png'
+import bombImg from './assets/bomb.png'
+
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
+import { UPDATE_SCORE } from '../utils/mutations';
+
 
 const PhaserGame = () => {
+    // variable checks if the game is running
+    const [gameRunning, setGameRunning] = useState(false);
+    const [userScore, setUserScore] = useState(0);
+    //const [updateScore] = useMutation(UPDATE_SCORE); //calls in the mutation to update the high score
+    //const {loading, error, data} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
+    let userHighScore;
+
+    function GetScore(){
+       const {loading, error, data} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
+        if (data){
+            return userHighScore = data.me.highScore;
+        } else {
+            return null;
+        }
+    }
+
+    const currentHighScore = GetScore(); //Pulls the user's current high score from the DB
+
   useEffect(() => {
-    let platforms, player, cursors, stars, bombs, bomb;
+    let platforms, player, cursors, stars, bombs, bomb, score;
 
     // Create a new Phaser game config
     const config = {
@@ -110,6 +133,7 @@ const PhaserGame = () => {
 
             score += 10;
             scoreText.setText('Score: ' + score);
+            setUserScore(score); //sets the user score globally
 
             if (stars.countActive(true) === 0) {
                 stars.children.iterate(function (child) {
@@ -130,35 +154,59 @@ const PhaserGame = () => {
         }
     //
     // Score text
-            var score = 0;
-            var scoreText;
-            scoreText = this.add.text(
-                16,
-                16, 
-                'score: 0', 
-                { fontSize: '32px', fill: '#000' }
-            );
+        var score = 0;
+        var scoreText;
+        scoreText = this.add.text(
+            16,
+            16, 
+            'score: 0', 
+            { fontSize: '32px', fill: '#000' }
+        );
     //
     // Bombs
-            bombs = this.physics.add.group();
+        bombs = this.physics.add.group();
 
-            this.physics.add.collider(bombs, platforms);
+        this.physics.add.collider(bombs, platforms);
 
-            this.physics.add.collider(player, bombs, hitBomb, null, this);
+        this.physics.add.collider(player, bombs, hitBomb, null, this);
 
-            function hitBomb (player, bomb) {
+        function hitBomb(player, bomb) {
+            player.setTint(0xff0000);
+            player.anims.play('turn');
+        
+            // pauses the game after a delay
+            this.time.delayedCall(100, function() {
                 this.physics.pause();
+            }, [], this);
+        
+            let gameOver = true;
 
-                player.setTint(0xff0000);
+            // Resets game due to useEffect()
+            setGameRunning(false);
+        }
+    //
+    //Reset Code
+        // Reset game state when replaying
+            score = 0;
+            scoreText.setText('Score: ' + score);
 
-                player.anims.play('turn');
+        // Reset player position
+            player.setX(100).setY(450);
+            player.setVelocityX(0);
+            player.setVelocityY(0);
 
-                let gameOver = true;
-            }
-        //
+        // Reset bombs and stars
+            bombs.clear(true, true);
+            stars.children.iterate((child) => {
+            child.enableBody(true, child.x, 0, true, true);
+            });
+
+        // Set gameRunning state to true
+            setGameRunning(true);
+    //
     }
 
-    // Update logic
+    // Update logic for player movement
     function update() {
         if (cursors.left.isDown)
         {
@@ -185,12 +233,22 @@ const PhaserGame = () => {
         }
     }
 
+    function gameEnd(){
+        console.log(currentHighScore);
+    }
     return () => {
+        // deletes game from page on page switch
+        gameEnd();
         game.destroy(true);
     };
-  }, []); // Empty dependency array ensures the effect runs once
+  }, [gameRunning]); // Empty dependency array ensures the effect runs once
 
-  return <div id="phaser-game" />;
+  return (
+  <>
+    <div id="phaser-game" />
+    <div id="temp-score">{userScore}</div> {/* Temporary Score Display for Debugging purposes */} 
+    <div id='temp-score'>High Score: {userHighScore}</div> {/* Temporary High Score Display for Debugging purposes */} 
+  </>);
 };
 
 export default PhaserGame;
