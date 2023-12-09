@@ -15,8 +15,7 @@ const PhaserGame = () => {
     // variable checks if the game is running
     const [gameRunning, setGameRunning] = useState(false);
     const [userScore, setUserScore] = useState(0);
-    //const [updateScore] = useMutation(UPDATE_SCORE); //calls in the mutation to update the high score
-    //const {loading, error, data} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
+    const [updateScore] = useMutation(UPDATE_SCORE); //calls in the mutation to update the high score
     let userHighScore;
 
     function GetScore(){
@@ -180,6 +179,19 @@ const PhaserGame = () => {
             }, [], this);
         
             let gameOver = true;
+            console.log({
+                userScore: `Your Score: ${userScore}`,
+                highScore: `High Score: ${userHighScore}`
+            })
+
+            if (userHighScore < userScore) {
+                console.log("If Statement")
+                updateScore({
+                    variables: {
+                        highScore: userScore
+                    }
+                })
+            }
 
             // Resets game due to useEffect()
             setGameRunning(false);
