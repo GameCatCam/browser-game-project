@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { /* useMutation, */useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom"
 
 import { QUERY_USERS } from '../utils/queries'
@@ -7,9 +7,8 @@ import { UPDATE_SCORE } from '../utils/mutations'
 
 
 const Leaderboard = () => {
-    const { loading, error, data } = useQuery(QUERY_USERS);
+    const { loading, error, data, refetch } = useQuery(QUERY_USERS);
     const [updateScore] = useMutation(UPDATE_SCORE);
-    const [refresh, setRefresh] = useState(false); // this allows the page to refresh without actually refreshing using states
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -26,11 +25,12 @@ const Leaderboard = () => {
         try {
             updateScore({
                 variables: {
-                    highScore: 0
+                    highScore: 120
                 },
-                refetchQueries: [{ query: QUERY_USERS }]
             })
-            setRefresh(!refresh); // Toggle state to trigger re-render the page
+
+            await refetch();
+            
         } catch (error) {
           console.error('Failed to reset user score: ', error.message);
         }
