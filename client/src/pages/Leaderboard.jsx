@@ -1,21 +1,40 @@
-// import { useState, useEffect } from 'react'
-import { /* useMutation, */useQuery } from "@apollo/client";
+import { useState, useEffect } from 'react'
+import { useMutation, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom"
 
 import { QUERY_USERS } from '../utils/queries'
-// import { RESET_SCORE } from '../utils/mutations'
+import { UPDATE_SCORE } from '../utils/mutations'
+
 
 const Leaderboard = () => {
-    const { loading, error, data } = useQuery(QUERY_USERS);
+    const { loading, error, data, refetch } = useQuery(QUERY_USERS);
+    const [updateScore] = useMutation(UPDATE_SCORE);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
+
 
     const sortedUsers = [...data.allUsers].sort((a, b) => b.highScore - a.highScore);
     const userRanks = sortedUsers.map((user, index) => ({
         ...user,
         playerRank: index + 1
     }))
+
+    //Resets the score back to zero using the updateScore mutation
+    const resetScoreFunction = async () => {
+        try {
+            updateScore({
+                variables: {
+                    highScore: 0
+                },
+            })
+
+            await refetch();
+            
+        } catch (error) {
+          console.error('Failed to reset user score: ', error.message);
+        }
+      };
 
     return (
         <>
@@ -24,7 +43,7 @@ const Leaderboard = () => {
                     <Link className="btn btn-secondary lbBtn" to={"/game"}>Game</Link>
                 </div>  
                 <div>
-                    <button className="btn btn-primary lbBtn" to="###">Reset Score</button>
+                    <button className="btn btn-primary lbBtn" onClick={resetScoreFunction} to="###">Reset Score</button>
                 </div>
                 
             </header>
