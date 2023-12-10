@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Phaser from 'phaser';
 
 // import dude from './assets/dude.png'
@@ -19,17 +19,25 @@ const PhaserGame = () => {
     const [updateScore] = useMutation(UPDATE_SCORE); //calls in the mutation to update the high score
     let userHighScore;
 
-    const {loading, error, data} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
+    const {loading, error, data, refetch} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
 
     if(data){
         userHighScore = data.me.highScore; //Pulls the user's current high score from the DB
     }
+
+    //using references to store and keep track of the Phaser game instance
+    const gameRef = useRef(null);
 
   useEffect(() => {
     let platforms, player, cursors, stars, bombs, bomb, currentHighScore;
     if(data){
         currentHighScore = data.me.highScore; //Pulls the user's current high score from the DB
     }
+    
+    // Destroy the existing game instance if it exists
+    if (gameRef.current) {
+      gameRef.current.destroy(true);
+    } 
 
     // Create a new Phaser game config
     const config = {
@@ -52,7 +60,7 @@ const PhaserGame = () => {
     };
 
     // Create a new Phaser game instance
-    const game = new Phaser.Game(config);
+    gameRef.current = new Phaser.Game(config);
 
     // Preload assets
     function preload() {
@@ -131,7 +139,6 @@ const PhaserGame = () => {
 
             score += 10;
             scoreText.setText('Score: ' + score);
-            setUserScore(score); //sets the user score globally
 
             if (stars.countActive(true) === 0) {
                 stars.children.iterate(function (child) {
@@ -179,15 +186,15 @@ const PhaserGame = () => {
         
             let gameOver = true;
             console.log({
-                userScore: `Your Score: ${userScore}`,
+                Score: `Score: ${score}`,
                 highScore: `High Score: ${userHighScore}`
             })
 
-            if (userHighScore < userScore) {
+            if (userHighScore < score) {
                 console.log("If Statement")
                 updateScore({
                     variables: {
-                        highScore: userScore
+                        highScore: score
                     }
                 })
             }
@@ -250,11 +257,14 @@ const PhaserGame = () => {
 
         // Set gameRunning state to true
             setGameRunning(true);
+
+        refetch(); //Refetches the current high score to be used in game logic and display on page
         }
     }
+
     return () => {
-        if(game){
-            game.destroy(true); //deletes game on page switch, if statement prevents on page load
+        if(gameRef.current){
+            gameRef.current.destroy(true); //deletes game on page switch, if statement prevents on page load
         }
     };
   }, [gameRunning, loading, error, data]); // Empty dependency array ensures the effect runs once
@@ -262,7 +272,6 @@ const PhaserGame = () => {
   return (
   <>
     <div id="phaser-game" />
-    <div id="temp-score">{userScore}</div> {/* Temporary Score Display for Debugging purposes */} 
     <div id='temp-score'>High Score: {userHighScore}</div> {/* Temporary High Score Display for Debugging purposes */} 
   </>);
 };
