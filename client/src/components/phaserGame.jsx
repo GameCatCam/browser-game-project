@@ -15,21 +15,15 @@ const PhaserGame = () => {
     // variable checks if the game is running
     const [gameRunning, setGameRunning] = useState(false);
     const [userScore, setUserScore] = useState(0);
+    const [userHighScore, setUserHighScore] = useState(0)
     const [updateScore] = useMutation(UPDATE_SCORE); //calls in the mutation to update the high score
-    let userHighScore;
-
-    function GetScore(){
-       const {loading, error, data} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
-        if (data){
-            return userHighScore = data.me.highScore;
-        } else {
-            return null;
-        }
-    }
-
-    const currentHighScore = GetScore(); //Pulls the user's current high score from the DB
+    const {loading, error, data} = useQuery(QUERY_ME); //calls in the query to get the user's current high score
 
   useEffect(() => {
+    if (data) {
+        setUserHighScore(data.me.highScore);
+    }
+
     let platforms, player, cursors, stars, bombs, bomb, score;
 
     // Create a new Phaser game config
@@ -179,6 +173,7 @@ const PhaserGame = () => {
             }, [], this);
         
             let gameOver = true;
+
             console.log({
                 userScore: `Your Score: ${userScore}`,
                 highScore: `High Score: ${userHighScore}`
@@ -245,18 +240,13 @@ const PhaserGame = () => {
         }
     }
 
-    function gameEnd(){
-        console.log(currentHighScore);
-    }
     return () => {
         // deletes game from page on page switch
-        gameEnd();
         game.destroy(true);
     };
   }, [gameRunning]); // Empty dependency array ensures the effect runs once
 
-  return (
-  <>
+  return (<>
     <div id="phaser-game" />
     <div id="temp-score">{userScore}</div> {/* Temporary Score Display for Debugging purposes */} 
     <div id='temp-score'>High Score: {userHighScore}</div> {/* Temporary High Score Display for Debugging purposes */} 
