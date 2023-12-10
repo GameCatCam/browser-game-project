@@ -25,7 +25,7 @@ const Leaderboard = () => {
         try {
             updateScore({
                 variables: {
-                    highScore: 120
+                    highScore: 0
                 },
             })
 
