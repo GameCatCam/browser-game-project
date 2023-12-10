@@ -41,4 +41,4 @@ export const UPDATE_SCORE = gql`
       highScore
     }
   }
-`
+`;
