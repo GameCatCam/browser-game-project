@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Phaser from 'phaser';
 
 import { useMutation, useQuery } from '@apollo/client';
