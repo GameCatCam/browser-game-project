@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useMutation, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom"
 

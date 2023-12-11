@@ -1,9 +1,9 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import logo from "../assets/img/logo.png"
 // import Game1 from "../components/Game1" //imports Game1 component from Game1.jsx
 import PhaserGame from "../components/phaserGame.jsx"
 
 import Auth from "../utils/auth";
-import { Link } from "react-router-dom"
 
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';

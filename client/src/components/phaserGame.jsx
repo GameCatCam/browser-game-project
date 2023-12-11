@@ -1,12 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Phaser from 'phaser';
 
-// import dude from './assets/dude.png'
-// import sky from './assets/sky.png'
-// import platform from './assets/platform.png'
-// import star from './assets/star.png'
-// import bombImg from './assets/bomb.png'
-
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { UPDATE_SCORE } from '../utils/mutations';
@@ -28,10 +22,7 @@ const PhaserGame = () => {
     const gameRef = useRef(null);
 
   useEffect(() => {
-    let platforms, player, cursors, stars, bombs, bomb, currentHighScore;
-    if(data){
-        currentHighScore = data.me.highScore; //Pulls the user's current high score from the DB
-    }
+    let platforms, player, cursors, stars, bombs, bomb;
     
     // Destroy the existing game instance if it exists
     if (gameRef.current) {
