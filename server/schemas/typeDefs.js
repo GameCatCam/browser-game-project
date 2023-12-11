@@ -20,7 +20,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!, highScore: Int): Auth
 	  updateUser(username: String, email: String, password: String): User
-    addScore(_id: ID, highScore: Int): User
+    updateScore(highScore: Int): User
   }
 `;
 
