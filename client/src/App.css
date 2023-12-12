@@ -162,7 +162,7 @@ img {
 input {
   font-family: 'Press Start 2P', sans-serif;
   display: flex;
-  align-items:flex-start;
+  align-items:center;
   justify-content: space-between;
   margin: auto;
 }
