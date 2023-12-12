@@ -79,11 +79,9 @@ body {
 .home {
   position: absolute ;
   display: block;
-  top: 20%;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 90px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
   width: 50%;
   text-align: center;
@@ -108,6 +106,19 @@ body {
     -4px 0 0 #df4a42,
     2px 0 0 #91fcfe,
     4px 0 0 #4405fc;
+}
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.home-button {
+  margin: 12px;
+}
+
+#home-home {
+  transform: translateY(6px);
 }
 
 img {
@@ -186,7 +197,7 @@ ul {
 }
 
 .site-header {
-  background-color: #5055CB;
+  background-color: #2f215f;
 }
 
 #leaderboard {
@@ -229,4 +240,8 @@ ul {
   padding: 25px;
   color: rgb(230, 230, 230);
   font-size: 18px;
+}
+
+#lb-game-btn {
+  font-size: 0.8vw;
 }
