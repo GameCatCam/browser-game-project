@@ -37,7 +37,7 @@ const Leaderboard = () => {
 
     return (
         <>
-            <header>
+            <header className="site-header">
                 <div>
                     <Link className="btn btn-secondary lbBtn" to={"/game"}>Game</Link>
                 </div>  

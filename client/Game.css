@@ -10,12 +10,12 @@ header {
     flex-direction: column;
 }
 
-#canvas{
-    width: 65%;
+canvas{
     background: #cdcdcd;
     border: 6px solid #2f215f;
 }
 
 #temp-score{
     color: yellow;
+    margin: 12px;
 }
