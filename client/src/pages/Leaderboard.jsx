@@ -18,6 +18,7 @@ const Leaderboard = () => {
         ...user,
         playerRank: index + 1
     }))
+    const topEight = userRanks.slice(0, 8)
 
     //Resets the score back to zero using the updateScore mutation
     const resetScoreFunction = async () => {
@@ -62,7 +63,7 @@ const Leaderboard = () => {
                             </tr>
                         </thead>
                         <tbody className="leader-list">
-                            {userRanks.map(user => (
+                            {topEight.map(user => (
                                 <tr className="leader-unit" key={user._id}>
                                     <th className="leader-rank">{user.playerRank}</th>
                                     <th className="leader-user">{user.username}</th>
