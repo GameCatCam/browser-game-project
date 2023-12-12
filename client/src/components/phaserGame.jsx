@@ -54,13 +54,13 @@ const PhaserGame = () => {
 
     // Preload assets
     function preload() {
-        this.load.image('sky', "https://i.imgur.com/70piewl.png")
-        this.load.image('ground', "https://i.imgur.com/McZEWMY.png")
-        this.load.image('star', "https://i.imgur.com/o1qpCe9.png")
-        this.load.image('bomb', "https://i.imgur.com/emrOtaz.png")
+        this.load.image('sky', "https://i.imgur.com/cn6R77a.png")
+        this.load.image('ground', "https://i.imgur.com/UkuG3ni.png")
+        this.load.image('star', "https://i.imgur.com/LnqjnaX.png")
+        this.load.image('bomb', "https://i.imgur.com/3kL70zF.png")
         this.load.spritesheet(
             'dude', 
-            "https://i.imgur.com/ueXzJRy.png",
+            "https://i.imgur.com/EU0zjl2.png",
             { frameWidth: 32, frameHeight: 48 }
         )
     }
@@ -155,7 +155,7 @@ const PhaserGame = () => {
             16,
             16, 
             'score: 0', 
-            { fontSize: '32px', fill: '#000' }
+            { fontSize: '32px', fill: '#fff' }
         );
     //
     // Bombs
