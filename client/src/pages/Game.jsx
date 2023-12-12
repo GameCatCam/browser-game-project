@@ -1,5 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import logo from "../assets/img/logo.png"
+import logo2 from "../assets/img/logo2.png"
 // import Game1 from "../components/Game1" //imports Game1 component from Game1.jsx
 import PhaserGame from "../components/phaserGame.jsx"
 
@@ -28,7 +29,7 @@ const Game = () => {
 		<div>
 			<header>
 				<button className="btn btn-secondary gmBtn" onClick={handleLeaderboardClick}>Leaderboard</button>
-				<img id="logo" src={logo}width="18%"></img>
+				<img id="logo" src={logo2}width="18%"></img>
 				<a className="btn btn-secondary gmBtn" href="/" onClick={() => Auth.logout()}>
                     Logout
                 </a>
