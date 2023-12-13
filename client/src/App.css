@@ -190,10 +190,20 @@ ul {
   margin: 10px;
   height: 40px;
   width: 13%;
+  text-shadow: -2px 0 0 #fdff2a,
+  -4px 0 0 #df4a42,
+  2px 0 0 #91fcfe,
+  4px 0 0 #4405fc;
+  letter-spacing: 4px;
 }
 
 .lbBtn {
   margin: 10px;
+  text-shadow: -2px 0 0 #fdff2a,
+  -4px 0 0 #df4a42,
+  2px 0 0 #91fcfe,
+  4px 0 0 #4405fc;
+  letter-spacing: 4px;
 }
 
 .site-header {
@@ -202,6 +212,8 @@ ul {
 
 #leaderboard {
   padding: 50px;
+  text-shadow: -2px 0 0 #b9b988,
+  2px 0 0 #7d9a9b;
 }
 
 .ladder-nav {
@@ -240,6 +252,109 @@ ul {
   padding: 25px;
   color: rgb(230, 230, 230);
   font-size: 18px;
+}
+
+.info-page {
+  background: repeating-linear-gradient(to bottom, #301e66, #301e66 2px, #2c1e5f 2px, #2c1e5f 4px);
+  margin-top: 10vh;
+  height: 100vh;
+  text-align: center;
+  text-shadow: -2px 0 0 #a8a8a8,
+  2px 0 0 #818181;
+}
+
+.info-container {
+  height: 100%;
+  width: 95%;
+  padding-top: 1vh;
+  margin-left: 2.5vw;
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 2px, #f3f3f3 2px, #f3f3f3 4px);
+}
+
+.howTo {
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  margin-bottom: 5%;
+  align-items: center;
+  justify-content: center;
+}
+
+.howToPlay {
+  margin-bottom: 5vh;
+  text-decoration: underline;
+}
+
+.howTo-Content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.howTo-One {
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.howTo-One p {
+  width: 66%;
+}
+
+.tutorial div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tutorial div p {
+  width: 40%;
+}
+
+.info-separate {
+  width: 98%;
+  height: 2px;
+  background-color: #0f0a1e;
+  transform: translateX(1%);
+  margin-bottom: 3%;
+}
+
+.plotLine {
+  margin: 0px 0px 0px 2.5vw;
+  position: relative;
+  height: 40%;
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  left: -5%;
+
+}
+
+.pL-Text {
+  width: 45%;
+  margin-left: 25%;
+}
+
+.info-chef {
+  height: 150px;
+  width: 150px;
+  margin: 12px;
+}
+
+.arrowKeys {
+  width: 300px;
+  height: 100px;
+}
+
+.plot {
+  height: 350px;
+  width: 350px;
 }
 
 #lb-game-btn {
