@@ -353,8 +353,8 @@ ul {
 }
 
 .plot {
-  height: 20vh;
-  width: 20vw;
+  height: 300px;
+  width: 300px;
 }
 
 #lb-game-btn {
@@ -368,5 +368,10 @@ ul {
 
   #lb-game-btn {
     font-size: 6px;
+  }
+
+  .plot {
+    height: 200px;
+    width: 200px;
   }
 }
