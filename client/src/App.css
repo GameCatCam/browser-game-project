@@ -353,10 +353,20 @@ ul {
 }
 
 .plot {
-  height: 350px;
-  width: 350px;
+  height: 20vh;
+  width: 20vw;
 }
 
 #lb-game-btn {
   font-size: 0.8vw;
+}
+
+@media screen and (max-width: 1100px) {
+  .info-page {
+    font-size: 12px;
+  }
+
+  #lb-game-btn {
+    font-size: 6px;
+  }
 }
