@@ -45,6 +45,7 @@ If you plan to just take a look at functionality, feel free to use the link to t
 
 * An entire achievement/badge system so users can brag and show their prestiege to their friends
 
+* New features and quality of life updates for pre-existing games (Fancy Chef), things like powerups, alternative control schemes, etc.
 ```
 
 ## Credits
