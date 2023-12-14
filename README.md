@@ -28,9 +28,9 @@ If you plan to just take a look at functionality, feel free to use the link to t
 ## Mockup:
 <h3>The following images shows the web application's appearance and functionality:</h3>
 
-<img src="./assets/img/browser-game-start.png" width="750px" alt="home landing page sporting blinking 'press start' text with a blue 'start' button">
-<img src="./assets/img/browser-game-main.png" width="750px" alt="the main page with the game, and both the leaderboard and logout buttons all surrounding the 'fancy chef' logo">
-<img src="./assets/img/browser-game-leaderboard.png" width="750px" alt="the main leaderboard page with some example scores">
+<img src="./src/assets/img/browser-game-start.png" width="750px" alt="home landing page sporting blinking 'press start' text with a blue 'start' button">
+<img src="./src/assets/img/browser-game-main.png" width="750px" alt="the main page with the game, and both the leaderboard and logout buttons all surrounding the 'fancy chef' logo">
+<img src="./src/assets/img/browser-game-leaderboard.png" width="750px" alt="the main leaderboard page with some example scores">
 
 ## Planned Features:
 
