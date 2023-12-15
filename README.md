@@ -101,7 +101,7 @@ If you plan to just take a look at functionality, feel free to use the link to t
 ## Video
 
 ### Here is a link to a video showcasing this project:
-[![Watch the video](https://img.youtube.com/vi/{insertthumbnailhere}/maxresdefault.jpg)](https://www.youtube.com/watch?v={insertlinkhere})
+[![Watch the video](https://img.youtube.com/vi/Myl_86VA4yU/maxresdefault.jpg)](https://www.youtube.com/watch?v=Myl_86VA4yU)
 
 ## Link to Deployed Page
 
